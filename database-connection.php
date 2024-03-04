@@ -9,9 +9,10 @@ global $databaseConnection;
 
 /* A COMPLETER : remplacer les paramètres pour se connecter à votre base de données de pokémon */
 $databaseConnection = mysqli_connect(
-    'URL de la machine hébergeant votre base de données',
-    "nom de l'utilisateur",
-    "mot de passe de l'utilisateur",
-    "nom de la base de données à laquelle se connecter",
-    "numéro de port ouvert"
+    'localhost',
+    "root",
+    NULL,
+    "pokedex",
+    3306
 );
+?>
