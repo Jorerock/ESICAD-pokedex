@@ -131,7 +131,11 @@ footer {
   text-align: center;
 }
 
+table{
+  margin: 1rem;}
 
-table, th, td {
+th, td , tr{
   border: 1px solid black;
 }
+
+th{border-radius: 25px 25px 0% 25px;}

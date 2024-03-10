@@ -4,7 +4,7 @@
 </main>
 </div>
 <footer>
-    <p>Tous droits réservés, ESICAD BTS SIO 1ere année, Développement Web 2023-2024</p>
+    <td>Tous droits réservés, ESICAD BTS SIO 1ere année, Développement Web 2023-2024</td>
 </footer>
 </body>
 

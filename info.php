@@ -19,25 +19,29 @@ if (!$query) {
 //             $previousDetails = $querypreviousDetails->fetch_assoc();
 //             echo '<h2>Évolution : ' . $previousDetails['NomPokemon'] . '</h2>';
 //             echo '<img src="' . $previousDetails['urlPhoto'] . '" alt="' . $previousDetails['NomPokemon'] . '">';
-//             echo '<p>PV: ' . $previousDetails['PV'] . '</p>';
-//             echo '<p>Attaque: ' . $previousDetails['Attaque'] . '</p>';
-//             echo '<p>Defense: ' . $previousDetails['Defense'] . '</p>';
-//             echo '<p>Vitesse: ' . $previousDetails['Vitesse'] . '</p>';
-//             echo '<p>Special: ' . $previousDetails['Special'] . '</p>';
+//             echo '<td>PV: ' . $previousDetails['PV'] . '</td>';
+//             echo '<td>Attaque: ' . $previousDetails['Attaque'] . '</td>';
+//             echo '<td>Defense: ' . $previousDetails['Defense'] . '</td>';
+//             echo '<td>Vitesse: ' . $previousDetails['Vitesse'] . '</td>';
+//             echo '<td>Special: ' . $previousDetails['Special'] . '</td>';
 //         }
 //     }
 // }
 
 
     $pokemon = $query->fetch_assoc();
-    echo '<h1>' . $pokemon['NomPokemon'] . '</h1>';
-    echo '<img src="' . $pokemon['urlPhoto'] . '" alt="' . $pokemon['NomPokemon'] . '">';
-    echo '<p>PV: ' . $pokemon['PV'] . '</p>';
-    echo '<p>Attaque: ' . $pokemon['Attaque'] . '</p>';
-    echo '<p>Defense: ' . $pokemon['Defense'] . '</p>';
-    echo '<p>Vitesse: ' . $pokemon['Vitesse'] . '</p>';
-    echo '<p>Special: ' . $pokemon['Special'] . '</p>';
-
+    echo '<table class="pokemon">';
+        echo '<tr>';
+        echo '<h1>' . $pokemon['NomPokemon'] . '</h1>';
+        echo '<img src="' . $pokemon['urlPhoto'] . '" alt="' . $pokemon['NomPokemon'] . '">';
+        echo '<td>id: ' . $pokemon["IdPokemon"] . '</td>';
+        echo '<td>PV: ' . $pokemon['PV'] . '</td>';
+        echo '<td>Attaque: ' . $pokemon['Attaque'] . '</td>';
+        echo '<td>Defense: ' . $pokemon['Defense'] . '</td>';
+        echo '<td>Vitesse: ' . $pokemon['Vitesse'] . '</td>';
+        echo '<td>Special: ' . $pokemon['Special'] . '</td>';
+        echo '</tr>';
+        echo '</table>';
 
     $queryEvolution = $databaseConnection->query("SELECT idEvolution FROM evolutionpokemon WHERE idPokemon = " . $id);
     if ($queryEvolution) {
@@ -48,11 +52,17 @@ if (!$query) {
                 $evolutionDetails = $queryEvolutionDetails->fetch_assoc();
                 echo '<h2>Évolution : ' . $evolutionDetails['NomPokemon'] . '</h2>';
                 echo '<img src="' . $evolutionDetails['urlPhoto'] . '" alt="' . $evolutionDetails['NomPokemon'] . '">';
-                echo '<p>PV: ' . $evolutionDetails['PV'] . '</p>';
-                echo '<p>Attaque: ' . $evolutionDetails['Attaque'] . '</p>';
-                echo '<p>Defense: ' . $evolutionDetails['Defense'] . '</p>';
-                echo '<p>Vitesse: ' . $evolutionDetails['Vitesse'] . '</p>';
-                echo '<p>Special: ' . $evolutionDetails['Special'] . '</p>';
+                echo '<table class="Evolution">';
+                echo '<tr>';
+                echo '<td>id: ' . $evolutionDetails["IdPokemon"] . '</td>';
+                echo '<td>PV: ' . $evolutionDetails['PV'] . '</td>';
+                echo '<td>Attaque: ' . $evolutionDetails['Attaque'] . '</td>';
+                echo '<td>Defense: ' . $evolutionDetails['Defense'] . '</td>';
+                echo '<td>Vitesse: ' . $evolutionDetails['Vitesse'] . '</td>';
+                echo '<td>Special: ' . $evolutionDetails['Special'] . '</td>';
+                echo '</tr>';
+                echo '</table>';
+        
             }
         }
     }

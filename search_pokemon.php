@@ -6,7 +6,7 @@ require_once("head.php");
 require_once("database-connection.php");
 ?>
 
-
+<pre>
    
 <table class = "tableau_pokemon">
 <thead class = "tableau_all">
@@ -33,7 +33,7 @@ else {
 
 </thead>
 </table>
-    
+</  pre>
 <?php
 require_once("footer.php");
 ?>

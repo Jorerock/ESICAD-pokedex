@@ -6,21 +6,34 @@ require_once("head.php");
 require_once("database-connection.php");
 ?>
 
+<pre>
 <?php
 
-
-// ***********************************************************************************************
 
 $queryTypes = $databaseConnection->query("SELECT DISTINCT libelleType FROM typepokemon ORDER BY libelleType");
 
 if (!$queryTypes) {
     echo "Impossbile de recuperer les types : " . $databaseConnection->error;
 } else {
+    echo '<table class="Type">';
+    echo '<thead class="Types">';
+    echo '<tr>';
     while ($type = $queryTypes->fetch_assoc()) {
-        echo '<h2>' . $type['libelleType'] . '</h2>';
         
-// ***********************************************************************************************
-        
+        // echo '<h2>' . $type['libelleType'] . '</h2>';
+
+        echo '<td><a href="list-by-type.php?id=' . $type['libelleType'] . '">' . $type['libelleType'] . '</a></td>';
+            
+    }
+
+}
+    echo '</tr>';
+    echo '</thead>';
+    echo '</table>';
+
+
+if (isset($_GET['id'])) {
+
         echo '<table class="tableau_pokemon">';
         echo '<thead class="tableau_all">';
         echo '    <th>Nom</th>';
@@ -29,7 +42,7 @@ if (!$queryTypes) {
 
         $query = $databaseConnection->query("SELECT pokemon.IdPokemon, pokemon.NomPokemon, pokemon.urlPhoto
         FROM pokemon INNER JOIN typepokemon ON pokemon.IdTypePokemon = typepokemon.IdType 
-        WHERE typepokemon.libelleType = '" . $type['libelleType'] . "' ORDER BY pokemon.IdPokemon");
+        WHERE typepokemon.libelleType = '" . $_GET['id'] . "' ORDER BY pokemon.IdPokemon");
         
         if (!$query) {
             throw new RuntimeException ("Cannot execute query. Cause : " . mysqli_error($connection)); 
@@ -43,13 +56,13 @@ if (!$queryTypes) {
             }
         }
 
-        echo '</table>';
-
-    }
- }  
+echo '</table>';
+}
+//     }
+//  }  
 ?>
 
-<pre>
+
     
 
 <?php
