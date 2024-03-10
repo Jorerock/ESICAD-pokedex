@@ -10,14 +10,15 @@ require_once("database-connection.php");
 
 
 // ***********************************************************************************************
+
 $queryTypes = $databaseConnection->query("SELECT DISTINCT libelleType FROM typepokemon ORDER BY libelleType");
 
 if (!$queryTypes) {
-    echo "Erreur SQL : " . $databaseConnection->error;
+    echo "Impossbile de recuperer les types : " . $databaseConnection->error;
 } else {
     while ($type = $queryTypes->fetch_assoc()) {
         echo '<h2>' . $type['libelleType'] . '</h2>';
-
+        
 // ***********************************************************************************************
         
         echo '<table class="tableau_pokemon">';
@@ -25,8 +26,6 @@ if (!$queryTypes) {
         echo '    <th>Nom</th>';
         echo '    <th>Photo</th>';
         echo '</thead>';
-
-
 
         $query = $databaseConnection->query("SELECT pokemon.IdPokemon, pokemon.NomPokemon, pokemon.urlPhoto
         FROM pokemon INNER JOIN typepokemon ON pokemon.IdTypePokemon = typepokemon.IdType 

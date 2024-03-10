@@ -3,14 +3,37 @@
 -->
 <?php
 require_once("head.php");
+require_once("database-connection.php");
 ?>
-<pre>
+
+
+   
+<table class = "tableau_pokemon">
+<thead class = "tableau_all">
+    <th>Numéro</th>
+    <th>Nom</th>
+    <th>Photo</th>
+
+<?php 
+$queryPokemon = $databaseConnection->query("SELECT * from pokemon Where NomPokemon LIKE '%" . $_GET['q'] . "%'");
+
+if (!$queryPokemon) {
+    echo 'Erreur SQL : " . $databaseConnection->error"';}
+else {
+    $pokemons = $queryPokemon->fetch_all(MYSQLI_ASSOC);
+    foreach ($pokemons as $pokemon) {
+        echo '<tr>';
+        echo '<td>' . $pokemon["IdPokemon"] . '</td>';
+        echo '<td><a href="info.php?id=' . $pokemon['IdPokemon'] . '">' . $pokemon['NomPokemon'] . '</a></td>';
+        echo '<td><a href="info.php?id=' . $pokemon['IdPokemon'] . '"><img src="' . $pokemon['urlPhoto'] . '" alt="' . $pokemon['NomPokemon'] . '"></a></td>';
+        echo '</tr>';
+    }
+}
+?>
+
+</thead>
+</table>
     
-    &lt;
-    A REMPLACER PAR VOTRE CODE POUR CHARGER ET AFFICHER DANS UN TABLEAU LE RESULTAT DE LA RECHERCHE DE POKEMONS DONT LE NOM CONTIENT LE TERME RECHERCHE, CLASSES PAR LEUR NOM.
-    CHAQUE POKEMON DOIT ETRE CLIQUABLE POUR NAVIGUER SUR UNE PAGE OU L'ON AFFICHE SON IMAGE ET L'ENSEMBLE DE SES CARACTERISTIQUES
-    &gt;
-    </pre>
 <?php
 require_once("footer.php");
 ?>
