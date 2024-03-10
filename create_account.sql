@@ -17,10 +17,11 @@ DROP TABLE IF EXISTS `mypokedex`;
 CREATE TABLE IF NOT EXISTS `mypokedex` (
     `login` varchar(50) NOT NULL,
     `idPokemon` int NOT NULL,
+    `date` date NOT NULL,
   KEY `fk_mypokedex_login` (`login`),
   KEY `fk_mypokedex_idPokemon` (`idPokemon`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `mypokedex` (`login`, `idPokemon`) VALUES
-('test', 1)
+INSERT INTO `mypokedex` (`login`, `idPokemon`,`date`) VALUES
+('test', 1,NOW())

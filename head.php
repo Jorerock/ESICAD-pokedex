@@ -15,9 +15,36 @@
 
 <body>
     <header>
+
+<?php
+error_reporting(E_ALL);
+session_start();
+if (!isset($_SESSION["login"])){
+    echo '<table>';
+    echo '<tr>';
+    echo '<td>login: vous n etes pas connecté </td>';
+    echo '</tr>';
+    echo '</table>';
+}else{
+echo '<table>';
+echo '<tr>';
+echo '<td>login: ' . $_SESSION["login"] . '</td>';
+echo '<td>nom: ' . $_SESSION["nom"] . '</td>';
+echo '<td>prenom: ' . $_SESSION["prenom"] . '</td>';
+echo '</tr>';
+echo '</table>';
+}
+
+
+?>
+
+
+
         <a href="index.php">
             <h1>Pokedex Du Professeur Chen</h1>
         </a>
+        
+        
         <form id="search-bar" action="search_pokemon.php">
             <span class="input-group">
                 <input id="q" name="q" type="search" placeholder="Rechercher un pokémon"><button type="submit">🔎</button>

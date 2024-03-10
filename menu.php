@@ -20,11 +20,7 @@
             register
             </li>
         </a>
-        <a href="login.php">
-            <li>
-            login
-            </li>
-        </a>
+
  
     </ul>
 </aside>
