@@ -1,6 +1,7 @@
 <!-- 
     Ce fichier représente la page de liste de tous les pokémons.
 -->
+
 <?php
 require_once("head.php");
 

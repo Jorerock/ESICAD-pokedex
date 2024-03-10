@@ -15,5 +15,16 @@
             Account
             </li>
         </a>
+        <a href="register.php">
+            <li>
+            register
+            </li>
+        </a>
+        <a href="login.php">
+            <li>
+            login
+            </li>
+        </a>
+ 
     </ul>
 </aside>
