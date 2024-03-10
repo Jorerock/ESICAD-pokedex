@@ -17,14 +17,20 @@ if (!isset($userlogin)){
 
 <article class="text-center">
     <h2>vous Etes connecté</h2>
+
 </article>
 
 <?php 
-if (isset($_GET['id'])) {
 
-    $query = $databaseConnection->query("SELECT * from user Where login LIKE '%" . $_GET['q'] . "%'");
+echo '<table>';
+echo '<tr>';
+echo '<td>login: ' . $_SESSION["login"] . '</td>';
+echo '<td>nom: ' . $_SESSION["nom"] . '</td>';
+echo '<td>prenom: ' . $_SESSION["prenom"] . '</td>';
+echo '</tr>';
+echo '</table>';
 
-}
+
 ?>
 
 

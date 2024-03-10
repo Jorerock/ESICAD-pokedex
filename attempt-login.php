@@ -13,11 +13,12 @@ echo ''. $login. '';
 echo ''. $password. '';
 
 $user = $databaseConnection->query("SELECT * FROM user WHERE login ='$login' AND password ='$password'")->fetch_assoc();
+
 if(isset($user)){
     $_SESSION['login'] = $user['login'];
     $_SESSION["nom"] = $user["nom"];
     $_SESSION["prenom"] = $user["prenom"];
-    header("location: index.php");
+    header("location: account.php");
 }
 else{
     header("location: index.php");
