@@ -52,3 +52,6 @@ require_once("database-connection.php");
     </div>    
 </body>
 </html>
+<?php
+require_once("footer.php");
+?>
