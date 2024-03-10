@@ -20,5 +20,5 @@ $query = $databaseConnection->query("INSERT INTO `user` (`nom`, `prenom`, `login
 // INSERT INTO `user` (`nom`, `prenom`, `login`, `password`) VALUES
 // ('test','test','test','test')
 
-header("location: index.php")
+header("location: index.php");
 ?>
