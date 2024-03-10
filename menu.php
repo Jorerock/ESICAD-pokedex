@@ -10,5 +10,10 @@
                 Pokémons par type
             </li>
         </a>
+        <a href="Account.php">
+            <li>
+            Account
+            </li>
+        </a>
     </ul>
 </aside>

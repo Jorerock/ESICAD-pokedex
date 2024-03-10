@@ -10,25 +10,32 @@ if (!$query) {
     echo "Erreur SQL : " . $databaseConnection->error;
 } else {
 
-// $queryprevious = $databaseConnection->query("SELECT idPokemon FROM evolutionpokemon WHERE idEvolution = " . $id);
-// if ($queryprevious) {
-//     $previous = $queryprevious->fetch_assoc();
-//     if ($previous) {
-//         $querypreviousDetails = $databaseConnection->query("SELECT * FROM pokemon WHERE IdPokemon = " . $previous['idEvolution']);
-//         if ($querypreviousDetails) {
-//             $previousDetails = $querypreviousDetails->fetch_assoc();
-//             echo '<h2>Évolution : ' . $previousDetails['NomPokemon'] . '</h2>';
-//             echo '<img src="' . $previousDetails['urlPhoto'] . '" alt="' . $previousDetails['NomPokemon'] . '">';
-//             echo '<td>PV: ' . $previousDetails['PV'] . '</td>';
-//             echo '<td>Attaque: ' . $previousDetails['Attaque'] . '</td>';
-//             echo '<td>Defense: ' . $previousDetails['Defense'] . '</td>';
-//             echo '<td>Vitesse: ' . $previousDetails['Vitesse'] . '</td>';
-//             echo '<td>Special: ' . $previousDetails['Special'] . '</td>';
-//         }
-//     }
-// }
+// *************************************************************
 
+$queryprevious = $databaseConnection->query("SELECT idPokemon FROM evolutionpokemon WHERE idEvolution = " . $id);
+if ($queryprevious) {
+    $previous = $queryprevious->fetch_assoc();
+    if ($previous) {
+        $querypreviousDetails = $databaseConnection->query("SELECT * FROM pokemon WHERE IdPokemon = " . $previous['idPokemon']);
+        if ($querypreviousDetails) {
+            $previousDetails = $querypreviousDetails->fetch_assoc();
+            echo '<h2>Évolution : ' . $previousDetails['NomPokemon'] . '</h2>';
+            echo '<img src="' . $previousDetails['urlPhoto'] . '" alt="' . $previousDetails['NomPokemon'] . '">';
+            echo '<table class="Evolution">';
+            echo '<tr>';
+            echo '<td>id: ' . $previousDetails["IdPokemon"] . '</td>';
+            echo '<td>PV: ' . $previousDetails['PV'] . '</td>';
+            echo '<td>Attaque: ' . $previousDetails['Attaque'] . '</td>';
+            echo '<td>Defense: ' . $previousDetails['Defense'] . '</td>';
+            echo '<td>Vitesse: ' . $previousDetails['Vitesse'] . '</td>';
+            echo '<td>Special: ' . $previousDetails['Special'] . '</td>';
+            echo '</tr>';
+            echo '</table>';
+        }
+    }
+}
 
+// **************************************************************
     $pokemon = $query->fetch_assoc();
     echo '<table class="pokemon">';
         echo '<tr>';
